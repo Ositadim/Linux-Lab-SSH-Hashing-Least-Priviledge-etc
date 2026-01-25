@@ -14,7 +14,10 @@ These labs focus on practical Linux skills required in cybersecurity roles, incl
 <br/>
 **Lab 1****: Install Software in a Linux Distribution**
 Objective: Use the Advanced Package Tool (APT) and sudo to install, uninstall, and verify network security tools in a Debian-based Linux environment.
-Tools Used: 
+
+<img width="632" height="564" alt="image" src="https://github.com/user-attachments/assets/0b9b3afe-ad5e-4754-a2da-5b67cd08ca28" />
+
+Tools installed: 
 Suricata – Network threat detection and intrusion detection system
 tcpdump – Network packet capture and traffic analysis tool
 
@@ -94,6 +97,12 @@ q → quit
 **Lab 4: Navigate and Analyze Files**
 Objective: Navigate Linux file structures, locate files, and analyze file contents without a graphical interface.
 
+<img width="640" height="460" alt="image" src="https://github.com/user-attachments/assets/41cd2aaf-dcf3-47e1-8760-bef73f42514b" /> <br/>
+
+<img width="621" height="597" alt="image" src="https://github.com/user-attachments/assets/86dcddec-6f63-4ecd-a686-4a4386a8f443" /> <br/>
+
+<img width="620" height="461" alt="image" src="https://github.com/user-attachments/assets/2eb3a966-a9aa-4276-8772-391c938a8c8c" /> <br/>
+
 **Filtering Content in Linux**
 🔹 Search Text with grep <br/>
 <img width="252" height="34" alt="image" src="https://github.com/user-attachments/assets/4e608a34-2aea-453a-a397-d39e8ef94914" />
@@ -101,7 +110,7 @@ Objective: Navigate Linux file structures, locate files, and analyze file conten
 - Pipe Output Between Commands <br/>
   <img width="422" height="53" alt="image" src="https://github.com/user-attachments/assets/77b18434-7dd9-4282-8640-2a8c29e270b5" />
 
-- Locate Files with find
+- Locate Files with **find**
   
   <img width="427" height="72" alt="image" src="https://github.com/user-attachments/assets/74390dbe-8174-415a-b618-d441941b72ec" />
 
