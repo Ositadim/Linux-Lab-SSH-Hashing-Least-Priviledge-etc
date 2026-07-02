@@ -1,333 +1,271 @@
-**Project Overview** <br/>
-These labs focus on practical Linux skills required in cybersecurity roles, including:
-- Installing and managing software using APT
-- Examining input and output in the Bash shell
-- Navigating and managing the Linux filesystem
-- Filtering and searching log data
-- Creating and modifying files and directories
-- Managing permissions, ownership, and users
-- Applying the principle of least privilege
-<br/>
-<p><strong>**Linux File Recording**:</strong> <a href="https://drive.google.com/drive/folders/10l66EblVzahm8ITEd6dWs4Mu5Msj2hZW?usp=sharing" target="_blank" rel="noopener noreferrer">Open Google Drive folder</a></p>
-<br/>
-<p><strong>**Log Analysis Recording**:</strong> <a href="https://drive.google.com/drive/folders/1LEuEFPwyLwPDtSlDcxy4lxlzR5OIPVR4?usp=sharing" target="_blank" rel="noopener noreferrer">Open Google Drive folder</a></p>
-<br/>
-**Activity overview **
-In this lab activity, you’ll use the Advanced Package Tool (APT) and sudo to install and uninstall applications in a Linux Bash shell. 
-While installing Linux applications can be a complex task, the APT package manager manages most of this complexity for you and allows you to quickly and reliably manage the applications in a Linux environment. 
-You'll use Suricata and tcpdump as an example. These are network security applications that can be used to capture and analyze network traffic. 
-The virtual machine you access in this lab has a Debian-based distribution of Linux running, and that works with the APT package manager. Using a virtual machine prevents damage to a system in the event its tools are used improperly. It also gives you the ability to revert to a previous state. 
-As a security analyst, it's likely you'll need to know how to install and manage applications on a Linux operating system. In this lab activity, you’ll learn how to do exactly that! 
-**Scenario** 
-Your role as a security analyst requires that you have the Suricata and tcpdump network security applications installed on your system. 
-In this scenario, you have to install, uninstall, and reinstall these applications on your Linux Bash shell. You also need to confirm that you’ve installed them correctly. 
-Here’s how you'll do this: First, you’ll confirm that APT is installed on your Linux Bash shell. Next, you’ll use APT to install the Suricata application and confirm that it is installed. Then, you’ll uninstall the Suricata application and confirm this as well. Next, you’ll install the tcpdump application and list the applications currently installed. Finally, you’ll reinstall the Suricata application and confirm that both applications are installed. 
+# Linux Fundamentals for Security Analysts: Package Management, Filesystem, Permissions & User Administration
 
-**Lab practice 1**: on the use of apt package tool (Advanced Package Tool ); suricata and tcpdump installation and uninstalling. 
- **Using apt command **
-- sudo apt install suricata suricata 
-- sudo apt remove suricata 
-- sudo apt install tcpdump tcpdump apt list –installed Output: 
+## Objective
 
-  <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/b63e7d21-b288-4b24-a431-ea25505bf216" />
+This project brought together a series of hands-on labs covering the practical Linux skills required in cybersecurity roles. Working in a Debian-based virtual machine through the Bash shell, the labs progressed from installing and managing network security software with APT (Suricata, tcpdump), through navigating the Linux filesystem and reading file contents, to filtering log data with `grep` and piping, creating and modifying files and directories, and finally managing permissions, ownership, and user accounts in line with the principle of least privilege. These are the day-to-day skills a security analyst relies on when investigating incidents remotely via a shell without a graphical interface, such as navigating to and reading a user access report during an unauthorized-access investigation.
 
-  
-# 
-Video recording: https://screenrec.com/share/NkeE5ihLmR  
- 
-2. Activity: Examine input and output in the shell 
-Introduction 
-In this lab, you’ll use the 	echo	 command to examine how input is received and how 
-output is returned in the shell. You’ll also use other Linux commands in the Bash shell to 
-explore more about input and output and other basic functions of the shell 
-What you’ll do 
-You have multiple tasks in this lab: 
-•	Generate output in the shell the echo command 
-•	Perform basic calculations the expr command 
-•	Clear the shell window the clear command 
-•	Explore the commands further 
- 
-Lab practice 2:  on the Use of Bash
+**Lab recordings:**
+* **Linux File Recording:** [Open Google Drive folder](https://drive.google.com/drive/folders/10l66EblVzahm8ITEd6dWs4Mu5Msj2hZW?usp=sharing)
+* **Log Analysis Recording:** [Open Google Drive folder](https://drive.google.com/drive/folders/1LEuEFPwyLwPDtSlDcxy4lxlzR5OIPVR4?usp=sharing)
 
-- echo osita echo “osita” expr 3 + 4 clear 
-- Lab practice 3: Commands Used in Linus 
-- Pwd – current working directory. The absolute file path. The whoami = username  
-- Ls - list 
-- Cd – change directory 
-- cat (file name)– displays the content of a file head (file name) – content display by default 10 lines of the file 
- 
-Filesystem Hierarchy Standard 
+## Skills Learned
 
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/610023bd-f8fc-4a09-8967-405f5e90943d" />
+* Installing, removing, and reinstalling applications with the APT package manager (`sudo apt install`, `sudo apt remove`, `apt list --installed`).
+* Examining input and output in the Bash shell (`echo`, `expr`, `clear`) and redirecting output with `>`, `>>`, and pipes (`|`).
+* Navigating the Linux filesystem (`pwd`, `ls`, `cd`) and understanding the Filesystem Hierarchy Standard (`/home`, `/bin`, `/etc`, `/tmp`, `/mnt`), including why `/tmp` is commonly abused by attackers.
+* Reading file content with `cat`, `head`, `tail`, and `less`, including using `tail` to read the most recent entries in a log file.
+* Filtering and searching log data with `grep`, piping, and `find` (with `-name`, `-iname`, `-mtime`, `-mmin`, and wildcards).
+* Creating and modifying files and directories (`mkdir`, `rmdir`, `touch`, `rm`, `mv`, `cp`, `nano`).
+* Analyzing and changing file permissions with `ls -l` / `ls -la` and `chmod` (symbolic notation: `u`/`g`/`o`, `+`/`-`/`=`), applying the principle of least privilege.
+* Managing users and ownership with `useradd`, `usermod` (`-g`, `-a -G`, `-d`, `-l`, `-L`), `userdel`, `chown`, and `groupdel`.
+* Using built-in help resources (`man`, `whatis`, `apropos`) to work independently in unfamiliar situations.
 
-  
-	• 	A file path is the location of a file or directory 
-	• **	root directory** - (/) 
-  •	**/home**: Each user in the system gets their own home directory. 
-  • **/bin:** This directory stands for “binary” and contains binary files and other executables.            Executables are files that contain a series of commands a computer needs to follow to run            programs and perform other functions. 
-  •	**/etc**: This directory stores the system’s configuration files. 
-  • **/tmp**: This directory stores many temporary files. The 	/tmp	 directory is commonly 
-      used by attackers because anyone in the system can modify data in these files. 
-  • **/mnt**: This directory stands for “mount” and stores media, such as USB drives and 
-       hard drives. 
-       
+## Tools Used
 
-**Reading File Content:** cat	, 	head	, 	tail	, and 	less
-**Cat:** entering cat updates.txt returns everything in the updates.txt file. 
-**Head** : displays the content of the file 
-if you only want to display the first five lines of the** updates.txt file**, enter **head -n 5 
-updates.txt**
-**tail: ** The 	tail	 command does the opposite of 	head	. This command can be used to 
-display just the end of a file, by default 10 lines. Entering only the last 10 lines of the updates.txt file. 	
-tail updates.txt
-	 returns 
+* Linux Bash shell on a Debian-based virtual machine (Qwiklabs environment).
+* APT (Advanced Package Tool) for package management.
+* Suricata and tcpdump as example network security applications for capture and analysis of network traffic.
+* Core Linux utilities: `grep`, `find`, `nano`, `chmod`, `chown`, `useradd`/`usermod`/`userdel`, `man`/`whatis`/`apropos`.
 
-		
-Pro Tip: You can use tail to read the most recent information in a log file. 
-Less: The less command returns the content of a file one page at a time.  
-Once you’ve accessed your content with the 	less	 command, you can use several 
-keyboard controls to move through the file: 
-•	Space bar: Move forward one page 
-•	b: Move back one page 
-•	Down arrow: Move forward one line 
-•	Up arrow: Move back one line 
-•	q: Quit and return to the previous terminal window 
+---
 
-**Lab Practice 4: **
+## Lab 1: Install and Manage Applications with APT
 
-**Activity overview **
+*Scenario: Your role as a security analyst requires the Suricata and tcpdump network security applications on your system. You must install, uninstall, and reinstall these applications in the Bash shell and confirm each state: first verifying APT is present, then installing Suricata, removing it, installing tcpdump, listing installed applications, and finally reinstalling Suricata so both tools are available.*
 
-Previously, you learned about Linux and how to communicate with the OS through the shell. You also learned how to use some of the core commands to navigate the Linux file system and read content from files it contains. 
-These are essential skills. For example, when investigating unauthorized access, you might navigate to and then read a user access report. 
-In this lab activity, you’ll navigate a Linux file structure, locate files, and read the contents of files. You’ll also need to answer a few multiple-choice questions based on the information contained in these files. 
-As a security analyst, it’s key that you know how to navigate, manage, and analyze files remotely via a Linux shell without a graphical user interface. 
-This exemplar is a walkthrough of the previous Qwiklab activity, including detailed instructions and solutions. You may use this exemplar if you were unable to complete the lab and/or you need extra guidance in competing lab tasks. You may also refer to this exemplar to prepare for the graded quiz in this module. 
-Practice screenshot 
-  
-  <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/c6ec7b2c-a6c0-4ed1-a30e-76b6d6152dd6" />
+**Commands used:**
+```bash
+sudo apt install suricata
+suricata
+sudo apt remove suricata
+sudo apt install tcpdump
+tcpdump
+apt list --installed
+```
 
- <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/f38ef45b-523f-4846-ba2d-7c0e52a18d67" />
+*Ref 1: Confirming installed applications with APT*
 
- 
-**Filter content in Linux** 
- 
-Filtering is selecting data that match a certain condition. 
-The **grep** command searches a specified file and returns all lines in the file containing a specified string or text. The grep command commonly takes two arguments: a specific string to search for and a specific file to search through. 
- 	example: **grep error time_logs.txt** 
-The pipe command is accessed using the pipe character (|). **Piping** sends the standard output of one command as standard input to another command for further processing.  
-For example, ls /home/analyst/reports | grep users returns the file and directory names in the reports directory that contain users. Before the pipe, **ls** indicates to list the names of the files and directories in reports. Then, it sends this output to the command after the pipe.  
-You can think of piping as a general tool that you can use whenever you want the output of one command to become the input of another command. 
- 
-**find** 
-The find command searches for directories and files that meet specified criteria.  
-When using 	find	, the first argument after 	find	 indicates where to start searching. For
-example, entering 
-projects
-the 	 	
-find /home/analyst/projects
-	 searches for everything starting at
-	directory.  	
-Specifying criteria involves options. **Options** modify the behavior of a command and commonly begin with a hyphen (-).  
--name and -iname 
-One key criteria analysts might use with find is to find file or directory names that contain a specific string. The specific string you’re searching for must be entered in quotes after the -name or -iname options. The difference between these two options is that -name is casesensitive, and -iname is not.  
-**Note**: An **asterisk (*)** is used as a wildcard to represent zero or more unknown characters. 
-**-mtime** 
-**Security analysts** might also use find to find files or directories last modified within a certain time frame. The -mtime option can be used for this search. For example, entering find /home/analyst/projects -mtime -3 returns all files and directories in the projects directory that have been modified within the past three days.  
-The **-mtime** option search is based on days, so entering **-mtime +1 **indicates all files or directories last modified more than one day ago, and entering -mtime -1 indicates all files or directories last modified less than one day ago.  
-Note: The option **-mmin **can be used instead of -mtime if you want to base the search on minutes rather than days. 
+<img width="600" height="300" alt="apt list --installed output confirming Suricata and tcpdump" src="https://github.com/user-attachments/assets/b63e7d21-b288-4b24-a431-ea25505bf216" />
 
-**Lab Practice**
-**Scenario**
-In this scenario, you need to obtain information contained in server log and user data files. 
-You also need to find files with specific names. 
-Here’s how you’ll do this: First, you’ll navigate to the logs directory and return the error messages in the server_logs.txt file. Next, you’ll navigate to the users directory and search for files that contain a specific string in their names. Finally, you’ll search for information contained in user files. 
- 
- 
-Solution: https://screenrec.com/share/J52VAg0ySB  
-commands used:  
-Task 1: Navigate to logs and find error messages 
+Output of the install/remove/reinstall cycle, with `apt list --installed` confirming that both Suricata and tcpdump are present on the system. Running each application by name after installation verified it was correctly installed.
 
-_cd /home/analyst/logs grep error server_logs.txt _
- 
-# Task 2: Navigate to users reports and find files by name cd /home/analyst/reports/users ls | grep Q1 ls | grep access 
- 
+📹 **Video recording:** https://screenrec.com/share/NkeE5ihLmR
+
+---
+
+## Lab 2: Examine Input and Output in the Shell
+
+Used the `echo` command to examine how input is received and output is returned in the shell, performed basic calculations, and cleared the terminal.
+
+**Commands used:**
+```bash
+echo osita
+echo "osita"
+expr 3 + 4
+clear
+```
+
+Both quoted and unquoted strings return the same output with `echo`; `expr` evaluates the arithmetic expression and returns `7`; `clear` resets the shell window.
+
+---
+
+## Lab 3: Navigate the Filesystem and Read File Content
+
+**Core navigation commands:** `pwd` (absolute path of the current working directory), `whoami` (current username), `ls` (list), `cd` (change directory), `cat` (display full file contents), `head` (first 10 lines by default, or e.g. `head -n 5 updates.txt` for the first five).
+
+*Ref 2: Filesystem Hierarchy Standard*
+
+<img width="600" height="300" alt="Filesystem Hierarchy Standard diagram" src="https://github.com/user-attachments/assets/610023bd-f8fc-4a09-8967-405f5e90943d" />
+
+Key directories from a security perspective:
+* **`/` (root directory)**: the top of the hierarchy; every file path starts here.
+* **`/home`**: each user's personal directory.
+* **`/bin`**: binaries and executables.
+* **`/etc`**: system configuration files.
+* **`/tmp`**: temporary files; commonly used by attackers because anyone on the system can modify data here.
+* **`/mnt`**: mount point for media such as USB and hard drives.
+
+**Reading file content:** `cat` (entire file), `head` (start of file), `tail` (last 10 lines by default: a practical way to read the most recent entries in a log file), and `less` (one page at a time, navigating with Space, `b`, arrow keys, and `q` to quit).
+
+*Ref 3: Navigating the file structure and locating files*
+
+<img width="600" height="300" alt="Navigating directories and locating files in the lab" src="https://github.com/user-attachments/assets/c6ec7b2c-a6c0-4ed1-a30e-76b6d6152dd6" />
+
+*Ref 4: Reading file contents to answer investigation questions*
+
+<img width="600" height="300" alt="Reading file contents with cat and head" src="https://github.com/user-attachments/assets/f38ef45b-523f-4846-ba2d-7c0e52a18d67" />
+
+Navigated the Linux file structure, located files, and read their contents: the same workflow an analyst uses when reviewing a user access report during an unauthorized-access investigation.
+
+---
+
+## Lab 4: Filter Content in Linux
+
+*Scenario: You need to obtain information contained in server log and user data files, and find files with specific names. First, navigate to the logs directory and return the error messages in `server_logs.txt`. Next, navigate to the users directory and search for files containing a specific string in their names. Finally, search for information contained inside user files.*
+
+**Key concepts:**
+* `grep` searches a file and returns all lines containing a specified string: e.g. `grep error time_logs.txt`.
+* **Piping (`|`)** sends the standard output of one command as input to another: e.g. `ls /home/analyst/reports | grep users`.
+* `find` locates files and directories matching criteria: `-name` (case-sensitive) / `-iname` (case-insensitive) with `*` as a wildcard, and `-mtime` for modification time (`-mtime -3` = modified within the past three days; `-mmin` for minutes).
+
+**Commands used:**
+```bash
+# Task 1: Navigate to logs and find error messages
+cd /home/analyst/logs
+grep error server_logs.txt
+
+# Task 2: Find files by name in the users reports
+cd /home/analyst/reports/users
+ls | grep Q1
+ls | grep access
+
 # Task 3: Search inside user files
-ls 
-grep jhill Q2_deleted_users.txt 
-grep "Human Resources" Q4_added_users.txt 
-  
- <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/349f6a4d-5fcf-4eb5-898a-78dcfbb2e6a6" />
+ls
+grep jhill Q2_deleted_users.txt
+grep "Human Resources" Q4_added_users.txt
+```
 
-**Create and modify directories and files **
+*Ref 5: Filtering logs and user files with grep and piping*
 
-**Mv** – file name into (specify the directory you want to move it to starting from the root) 
- 
-**rmdir** – remove directory. The rmdir command cannot delete directories with files or                      subdirectories inside. For example, entering rmdir /home/analyst returns an error message. 
-**mkdir** – create a directory(name of directory) 
-**touch** – creat a file(name and text format)
-**rm** – file remove 
-**cp** – copy file to a different directory (does not delete the original) 
-**nano** – file editor. Nano (name of the file you want to edit) you have to be in the file you want to edit. 
-**Ctrl O** – to save, enter to save with current user name. No autosaving.  Ctrl x – exit 
- 
-You can also create a new file in nano by entering _nano_ followed by a new file name. For example, entering nano authorized_users.txt from the 
-/home/analyst/reports directory creates the authorized_users.txt file within that directory and opens it in a new nano editing window. 
-**Note**: Vim and Emacs are also popular command-line text editors. 
-la	 
-_In addition to the pipe (|), you can also use the right angle bracket (>) and double right angle bracket (>>) operators to redirect standard output. 
-When used with 	echo	, the 	> and 	>>	 operators can be used to send the output of 	echo	 to a
->>_
-specified file rather than the screen. The difference between the two is that **>** overwrites your existing file, and 	 adds your content to the end of the existing file instead of overwriting it. The > operator should be used carefully, because it’s not easy to recover overwritten files. 
-When you’re inside the directory containing the permissions.txt file, entering echo 
-"last updated date" >> permissions.txt adds the string “last updated date” to the file contents. Entering echo "time" > permissions.txt after this command overwrites the entire file contents of permissions.txt with the string “time”. 
-Note: Both the 	> 
-your specified name.
-and >> operators will create a new file if one doesn’t already exist with 
- 
-  
-**Lab Activity: Manage files with Linux commands** 
+<img width="600" height="300" alt="grep and piping used to filter server logs and user files" src="https://github.com/user-attachments/assets/349f6a4d-5fcf-4eb5-898a-78dcfbb2e6a6" />
 
-cd /home/analyst mkdir
-logs 
-ls 
-rmdir temp 
-ls 
-cd notes mv Q3patches.txt /home/analyst/reports/ ls
-/home/analyst/reports rm tempnotes.txt 
-ls 
-touch tasks.txt 
-ls 
-nano tasks.txt 
-clear cat 
-tasks.txt 
- 
- <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/036570a3-cd88-48b3-b6f1-df9f0a38651c" />
+📹 **Solution recording:** https://screenrec.com/share/J52VAg0ySB
 
- <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/75d28327-5ac6-4fde-a274-843df7525eb7" />
+---
 
-<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/3f099c6d-1acc-4852-a92c-d706868eba9d" />
+## Lab 5: Create and Modify Directories and Files
 
-File permissions and ownership 
-Ls – list 
-Ls -a = list hiddend files too 
-Ls -la = permissions to files and directory, including hidden files 
-Ls -l  = extended info on the file, permission and format. Displays permissions to files and directories. Also displays other additional information, including owner name, group, file size, and the time of last modification. 
-	 
- 
-**Change permissions: for The principle of least privilege**
+**Key commands:** `mkdir` (create directory), `rmdir` (remove empty directory: fails if the directory contains files or subdirectories), `touch` (create file), `rm` (remove file), `mv` (move/rename), `cp` (copy without deleting the original), and `nano` (command-line editor: `Ctrl+O` to save, `Ctrl+X` to exit; Vim and Emacs are common alternatives).
 
-chmod = change mode  	symbolic: chmod g+w, o-r access.txt persmissions to who g group o other u user permition types w write r read x execute 
- 
-following command would add all permissions to login_sessions.txt: 
-chmod u+rwx,g+rwx,o+rwx login_sessions.txt 
-If you wanted to take all the permissions away, you could use 
-chmod u-rwx,g-rwx,o-rwx login_sessions.txt 
-Another way to assign these permissions is to use the equals sign (=) in this first argument. 
-Using = with group, and other:	
-chmod
-	login_sessions.txt
- sets, or assigns, the permissions exactly as specified. For example, the following command would set read permissions for 	 for user, 
-	 	
-**Character and Description **
-u 	indicates changes will be made to user permissions 
-g 	indicates changes will be made to group permissions 
-o 	indicates changes will be made to other permissions 
-+ 	adds permissions to the user, group, or other 
-- 	removes permissions from the user, group, or other 
-= 	assigns permissions for the user, group, or other 
-Note: When there are permission changes to more than one owner type, commas are	 
-chmod u=r,g=r,o=r login_sessions.txt 
-needed to separate changes for each owner type. You should not add spaces after those commas. 
+**Output redirection:** `>` overwrites a file's contents while `>>` appends to it: both create the file if it doesn't exist. `>` should be used carefully, since overwritten files are not easy to recover. Example: `echo "last updated date" >> permissions.txt` appends the string; a subsequent `echo "time" > permissions.txt` would overwrite the entire file.
 
-**The principle of least privilege in action**
-As a security analyst, you may encounter a situation like this one: There’s a file called bonuses.txt within a compensation directory. The owner of this file is a member of the Human Resources department with a username of hrrep1. It has been decided that hrrep1 needs access to this file. But, since this file contains confidential information, no one else in the hr group needs access. 
-You run 	ls -l	 to check the permissions of files in the compensation directory and 
-discover that the permissions for 	
-bonuses.txt
-	 are 	
--rw-rw----
-	. The group owner type 
-   
-	has read and write permissions that do not align with the principle of least privilege.			
-To remedy the situation, you input chmod g-rw bonuses.txt. Now, only the user who needs to access this file to carry out their job responsibilities can access this file. 
- 
- 
-Lab practice: doc link: [Google Doc Link](https://docs.google.com/document/d/1_Q_kvpvsM3_3I_7wUoIm-hGY-Z-ubaTtlArWlz-0bqE/edit?usp=sharing) 
-Code:  cd /home/researcher2/projects 
-ls -l ls -la 
-chmod o-w project_k.txt 
-ls -l 
-chmod g-r project_m.txt 
-ls -la 
-chmod u-w,g-w,g+r .project_x.txt 
-ls -l 
-chmod g-x drafts 
-  <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/f83c879c-6fac-4621-a013-a4f6644cca26" />
+**Commands used:**
+```bash
+cd /home/analyst
+mkdir logs
+ls
+rmdir temp
+ls
+cd notes
+mv Q3patches.txt /home/analyst/reports/
+ls /home/analyst/reports
+rm tempnotes.txt
+ls
+touch tasks.txt
+ls
+nano tasks.txt
+clear
+cat tasks.txt
+```
 
-   <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/c75782c5-d08e-4623-ae17-ca554ae98745" />
+*Ref 6: Creating and removing directories*
 
-Add and delete users 
- 
-**Types of users** 
-Root user – supper user. sudo provides control to root user access. Special privileges. 
-Useradd = sudo useradd osita 
-Userdel – sudo userdel osita 
+<img width="600" height="300" alt="mkdir and rmdir operations" src="https://github.com/user-attachments/assets/036570a3-cd88-48b3-b6f1-df9f0a38651c" />
 
-• -g: Sets the user’s default group, also called their primary group 
-• -G	: Adds the user to additional groups, also called supplemental or secondary groups 
-To use the 	-g	 option, the primary group must be specified after 	-g	.
+*Ref 7: Moving and removing files*
 
-For example, entering sudo useradd -g security fgarcia
-	 adds fgarcia as a new user and assigns their primary group to be security. 			
-To use the **-G** option, the supplemental group must be passed into the command after -G. You can add more than one supplemental group at a time with the -G option. Entering sudo useradd -G finance,admin fgarcia adds fgarcia as a new user and adds them to the existing finance and admin groups. 
- 
- 
+<img width="600" height="300" alt="Moving Q3patches.txt and removing tempnotes.txt" src="https://github.com/user-attachments/assets/75d28327-5ac6-4fde-a274-843df7525eb7" />
 
-**Usermod** 
-The usermod command modifies existing user accounts. The same -g and -G options from the useradd command can be used with usermod if a user already exists.  
-To change the primary group of an existing user, you need the 	-g	 option. For example, 
-entering group to the 	
-sudo usermod -g executive fgarcia would change fgarcia’s primary executive group. 			
-To add a supplemental group for an existing user, you need the 	-G	 option. You also need a 
--a option, which appends the user to an existing group and is only used with the -G option. For example, entering  _sudo usermod -a -G marketing fgarcia_ would  add the existing **fgarcia** user to the supplemental marketing group. 	
-			
-Note: When changing the supplemental group of an existing user, if you don't include the -a option, -G will replace any existing supplemental groups with the groups specified after usermod.  Using -a with -G ensures that the new groups are added but existing groups are not replaced. 
- 
-**Chown** 
-There are other options you can use with usermod to specify how you want to modify the user, including: 
-•	-d: Changes the user’s home directory. 
-•	-l: Changes the user’s login name. 
-•	-L: Locks the account so the user can’t log in. 
-The userdel command deletes a user from the system.  
-The chown command changes ownership of a file or directory. You can use chown to change user or group ownership. To change the user owner of the access.txt file to fgarcia, enter sudo chown fgarcia access.txt. To change the group owner of access.txt to security, enter sudo chown :security access.txt. You must enter a colon (:) before security to designate it as a group name. 
- 
-**Task**
+*Ref 8: Creating and editing tasks.txt with nano*
+
+<img width="600" height="400" alt="Creating tasks.txt with touch and editing it in nano" src="https://github.com/user-attachments/assets/3f099c6d-1acc-4852-a92c-d706868eba9d" />
+
+## Lab 6: File Permissions and the Principle of Least Privilege
+
+**Inspecting permissions:** `ls -l` displays permissions plus owner, group, file size, and last modification time; `ls -a` includes hidden files; `ls -la` combines both.
+
+**Changing permissions with `chmod` (symbolic notation):**
+
+| Character | Description |
+|-----------|-------------|
+| `u` | changes user (owner) permissions |
+| `g` | changes group permissions |
+| `o` | changes other permissions |
+| `+` | adds permissions |
+| `-` | removes permissions |
+| `=` | assigns permissions exactly as specified |
+
+Examples: `chmod u+rwx,g+rwx,o+rwx login_sessions.txt` grants all permissions; `chmod u-rwx,g-rwx,o-rwx login_sessions.txt` removes them all; `chmod u=r,g=r,o=r login_sessions.txt` sets read-only for everyone. Changes for multiple owner types are separated by commas with no spaces.
+
+**Least privilege in action:** a confidential `bonuses.txt` file owned by `hrrep1` showed permissions `-rw-rw----`: the group had read and write access it didn't need. Running `chmod g-rw bonuses.txt` restricted access to only the user whose job requires it.
+
+**Commands used:**
+```bash
+cd /home/researcher2/projects
+ls -l
+ls -la
+chmod o-w project_k.txt
+ls -l
+chmod g-r project_m.txt
+ls -la
+chmod u-w,g-w,g+r .project_x.txt
+ls -l
+chmod g-x drafts
+```
+
+*Ref 9: Inspecting permissions with ls -l and ls -la*
+
+<img width="600" height="300" alt="Inspecting file permissions including hidden files" src="https://github.com/user-attachments/assets/f83c879c-6fac-4621-a013-a4f6644cca26" />
+
+*Ref 10: Applying least privilege with chmod, including a hidden file and a directory*
+
+<img width="600" height="300" alt="chmod changes on project files, hidden file, and drafts directory" src="https://github.com/user-attachments/assets/c75782c5-d08e-4623-ae17-ca554ae98745" />
+
+📄 **Lab documentation:** [Google Doc link](https://docs.google.com/document/d/1_Q_kvpvsM3_3I_7wUoIm-hGY-Z-ubaTtlArWlz-0bqE/edit?usp=sharing)
+
+
+## Lab 7: Add, Modify, and Delete Users
+
+**Key concepts:**
+* The **root user** (superuser) holds special privileges; `sudo` provides controlled access to root-level actions.
+* `useradd` creates users: `-g` sets the primary group (e.g. `sudo useradd -g security fgarcia`), `-G` adds supplemental groups (e.g. `sudo useradd -G finance,admin fgarcia`).
+* `usermod` modifies existing users: `-g` changes the primary group; `-a -G` appends supplemental groups (omitting `-a` would *replace* existing supplemental groups). Other options: `-d` (home directory), `-l` (login name), `-L` (lock account).
+* `chown` changes ownership: `sudo chown fgarcia access.txt` for the user owner, `sudo chown :security access.txt` for the group owner (note the colon).
+* `userdel` deletes a user; `groupdel` deletes a group.
+
+**Commands used:**
+```bash
 sudo useradd researcher9
-sudo usermod -g research_team researcher9 
-sudo chown researcher9 /home/researcher2/projects/project_r.txt 
-sudo usermod -a -G sales_team researcher9 
-sudo userdel researcher9 
-sudo groupdel researcher9 
+sudo usermod -g research_team researcher9
+sudo chown researcher9 /home/researcher2/projects/project_r.txt
+sudo usermod -a -G sales_team researcher9
+sudo userdel researcher9
+sudo groupdel researcher9
+```
 
-   <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/db5d9ac4-acdd-4a37-ad03-e7d22afdf400" />
+*Ref 11: Full user lifecycle: create, assign groups, transfer ownership, delete*
 
-Resources: 
-man = manual (man usermod) whatis = what a command does (eg: whatis tail_ 
-apropos = -a or with key word for specificity. when you don’t know what to look up…. Eg: how to change password, use the word “password” output of the man command is also called a “man page.” 
-   
- 
-**Practical Application in Lab**
-
-codes whatis cat man cat 
-apropos -a first part file 
-man useradd whatis rm 
-whatis rmdir 
-apropos -a create new group 
- 
- 
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/ac0eeeca-7b6a-415f-b3ce-b20e3fd7812a" />
-
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/2ff45c3a-423f-456c-be0b-8ee5752c7f53" />
+<img width="600" height="300" alt="User administration lifecycle with useradd, usermod, chown, userdel" src="https://github.com/user-attachments/assets/db5d9ac4-acdd-4a37-ad03-e7d22afdf400" />
 
 
+## Lab 8: Get Help in the Shell
 
+**Resources:** `man` displays the manual ("man page") for a command; `whatis` gives a one-line description (e.g. `whatis tail`); `apropos` searches man pages by keyword when you don't know which command to look up: `-a` narrows results to entries matching all keywords (e.g. `apropos -a create new group`).
+
+**Commands used:**
+```bash
+whatis cat
+man cat
+apropos -a first part file
+man useradd
+whatis rm
+whatis rmdir
+apropos -a create new group
+```
+
+*Ref 12: Using whatis and man to look up commands*
+
+<img width="600" height="300" alt="whatis and man output for core commands" src="https://github.com/user-attachments/assets/ac0eeeca-7b6a-415f-b3ce-b20e3fd7812a" />
+
+*Ref 13: Discovering commands by keyword with apropos*
+
+<img width="600" height="300" alt="apropos keyword search results" src="https://github.com/user-attachments/assets/2ff45c3a-423f-456c-be0b-8ee5752c7f53" />
+
+
+## Conclusion
+
+* Package managers like APT make installing security tooling repeatable and verifiable: always confirm state with `apt list --installed` or by invoking the tool.
+* `grep`, piping, and `find` turn raw log directories into answerable questions: the foundation of log analysis before any SIEM is involved.
+* `>` vs `>>` is a small distinction with big consequences: one careless `>` can destroy a log or config file.
+* Permissions review (`ls -la`) plus targeted `chmod` changes is the practical, command-line application of the principle of least privilege.
+* `usermod -a -G` versus `usermod -G` is a classic pitfall: forgetting `-a` silently strips a user's existing supplemental groups.
